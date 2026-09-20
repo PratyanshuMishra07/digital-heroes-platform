@@ -1,0 +1,15 @@
+﻿{
+  "name": "digital-heroes-server",
+  "version": "1.0.0",
+  "description": "Digital Heroes Golf & Charity Draw Platform API",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node tests/logic.test.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5"
+  }
+}
