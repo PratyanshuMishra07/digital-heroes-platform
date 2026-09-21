@@ -20,55 +20,55 @@ export default function Home({ setActiveTab }) {
     <div className="space-y-24 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Hero Section */}
       <section className="relative text-center pt-8 pb-12">
-        <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#131B2A] border border-[#1E293B] text-xs font-semibold text-[#E0B589] mb-8">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#131B2A] border border-[#1E293B] text-xs font-semibold text-[#E0B589] mb-6">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
           <span>March 2026 Monthly Charity Draw Active</span>
         </div>
 
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight">
-          Where Every Score <br />
+        <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight px-2">
+          Where Every Score{' '}
           <span className="font-serif italic font-normal text-[#E0B589]">Powers a Cause.</span>
         </h1>
 
-        <p className="mt-6 text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
+        <p className="mt-4 text-base sm:text-lg text-gray-300 max-w-2xl mx-auto font-light leading-relaxed px-2">
           Not another traditional golf leaderboard. Digital Heroes links your real weekend golf scores to direct philanthropic impact and life-changing monthly prize pools.
         </p>
 
         {/* Live Pool Banner */}
-        <div className="mt-12 max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 p-6 rounded-2xl bg-[#131B2A]/90 border border-[#1E293B] shadow-2xl backdrop-blur-xl">
-          <div className="p-4 border-b sm:border-b-0 sm:border-r border-[#1E293B]">
+        <div className="mt-8 max-w-3xl mx-auto divide-y sm:divide-y-0 sm:divide-x divide-[#1E293B] flex flex-col sm:flex-row p-0 rounded-2xl bg-[#131B2A]/90 border border-[#1E293B] shadow-2xl backdrop-blur-xl overflow-hidden">
+          <div className="p-5 flex-1 text-left sm:text-center">
             <p className="text-xs uppercase tracking-wider text-gray-400 font-semibold">Total Prize Pool</p>
-            <p className="text-3xl font-extrabold text-[#E0B589] mt-1">
+            <p className="text-2xl sm:text-3xl font-extrabold text-[#E0B589] mt-1">
               ${poolData ? poolData.pool.totalPrizePool.toLocaleString() : '4,850'}
             </p>
             <p className="text-xs text-emerald-400 mt-1">Includes Rollover Jackpot</p>
           </div>
-          <div className="p-4 border-b sm:border-b-0 sm:border-r border-[#1E293B]">
+          <div className="p-5 flex-1 text-left sm:text-center">
             <p className="text-xs uppercase tracking-wider text-gray-400 font-semibold">5-Match Jackpot</p>
-            <p className="text-3xl font-extrabold text-white mt-1">
+            <p className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
               ${poolData ? poolData.pool.tiers.tier5.poolShare.toLocaleString() : '3,190'}
             </p>
             <p className="text-xs text-[#E0B589] mt-1">40% Share + Rollover</p>
           </div>
-          <div className="p-4">
+          <div className="p-5 flex-1 text-left sm:text-center">
             <p className="text-xs uppercase tracking-wider text-gray-400 font-semibold">Charity Raised</p>
-            <p className="text-3xl font-extrabold text-white mt-1">
+            <p className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
               ${poolData ? poolData.pool.totalCharityRaised.toLocaleString() : '1,820'}
             </p>
             <p className="text-xs text-gray-400 mt-1">Min 10% from every fee</p>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
+        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3 px-4">
           <button 
             onClick={() => setActiveTab('dashboard')}
-            className="px-8 py-4 rounded-xl font-bold bg-[#E0B589] hover:bg-[#C99E72] text-black transition-all shadow-xl shadow-[#E0B589]/20 transform hover:-translate-y-0.5"
+            className="w-full sm:w-auto px-8 py-4 rounded-xl font-bold bg-[#E0B589] hover:bg-[#C99E72] text-black transition-all shadow-xl shadow-[#E0B589]/20"
           >
             Enter Scores & Join Draw
           </button>
           <button 
             onClick={() => setActiveTab('charities')}
-            className="px-8 py-4 rounded-xl font-bold bg-[#131B2A] hover:bg-[#1E293B] border border-[#1E293B] text-white transition-all"
+            className="w-full sm:w-auto px-8 py-4 rounded-xl font-bold bg-[#131B2A] hover:bg-[#1E293B] border border-[#1E293B] text-white transition-all"
           >
             Explore Charities
           </button>

@@ -111,17 +111,17 @@ export default function Admin() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1E293B] pb-6">
         <div>
           <span className="text-xs uppercase font-extrabold tracking-widest text-[#E0B589]">Section § 11</span>
-          <h1 className="text-3xl font-extrabold text-white">Full Platform Control Surface</h1>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white">Full Platform Control Surface</h1>
           <p className="text-xs text-gray-400 mt-1">Manage users, configure draw engines, review proof submissions & monitor KPIs.</p>
         </div>
 
         {/* Quick KPI stats */}
-        <div className="flex gap-4">
-          <div className="px-4 py-2 rounded-xl bg-[#131B2A] border border-[#1E293B] text-center">
+        <div className="flex flex-wrap gap-3">
+          <div className="px-4 py-2 rounded-xl bg-[#131B2A] border border-[#1E293B] text-center flex-1 min-w-[120px]">
             <p className="text-[10px] uppercase font-bold text-gray-400">Total Prize Pool</p>
             <p className="text-lg font-extrabold text-[#E0B589]">${stats?.totalPrizePool.toLocaleString() || '0'}</p>
           </div>
-          <div className="px-4 py-2 rounded-xl bg-[#131B2A] border border-[#1E293B] text-center">
+          <div className="px-4 py-2 rounded-xl bg-[#131B2A] border border-[#1E293B] text-center flex-1 min-w-[120px]">
             <p className="text-[10px] uppercase font-bold text-gray-400">Charity Raised</p>
             <p className="text-lg font-extrabold text-white">${stats?.totalCharityRaised.toLocaleString() || '0'}</p>
           </div>
@@ -131,21 +131,22 @@ export default function Admin() {
       {/* Surface Navigation Tabs */}
       <div className="flex flex-wrap gap-2 border-b border-[#1E293B] pb-4">
         {[
-          { id: 'draws', label: '02. Draw Management' },
-          { id: 'winners', label: '04. Winners & Proofs' },
-          { id: 'charities', label: '03. Charity Management' },
-          { id: 'stats', label: '05. Reports & Analytics' }
+          { id: 'draws', label: 'Draw Mgmt', fullLabel: '02. Draw Management' },
+          { id: 'winners', label: 'Winners', fullLabel: '04. Winners & Proofs' },
+          { id: 'charities', label: 'Charities', fullLabel: '03. Charity Management' },
+          { id: 'stats', label: 'Analytics', fullLabel: '05. Reports & Analytics' }
         ].map(tab => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+            className={`px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               activeTab === tab.id 
                 ? 'bg-[#E0B589] text-black shadow-lg shadow-[#E0B589]/20' 
                 : 'bg-[#131B2A] text-gray-400 hover:text-white border border-[#1E293B]'
             }`}
           >
-            {tab.label}
+            <span className="sm:hidden">{tab.label}</span>
+            <span className="hidden sm:inline">{tab.fullLabel}</span>
           </button>
         ))}
       </div>
@@ -153,41 +154,41 @@ export default function Admin() {
       {/* TAB 1: DRAW MANAGEMENT */}
       {activeTab === 'draws' && (
         <div className="space-y-6">
-          <div className="p-6 rounded-2xl bg-[#131B2A] border border-[#1E293B] space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="p-4 sm:p-6 rounded-2xl bg-[#131B2A] border border-[#1E293B] space-y-6">
+            <div className="flex flex-col gap-4">
               <div>
                 <h3 className="text-lg font-bold text-white">Monthly Draw Operations (§ 06 & § 07)</h3>
                 <p className="text-xs text-gray-400 mt-1">Configure draw logic, run live simulations, and publish verified results.</p>
               </div>
 
               {/* Draw Logic Toggle */}
-              <div className="flex items-center gap-2 bg-[#0B0F17] p-1.5 rounded-xl border border-[#1E293B]">
+              <div className="flex items-center gap-2 bg-[#0B0F17] p-1.5 rounded-xl border border-[#1E293B] w-full sm:w-auto">
                 <button
                   onClick={() => setDrawMode('algorithmic')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${drawMode === 'algorithmic' ? 'bg-[#E0B589] text-black' : 'text-gray-400'}`}
+                  className={`flex-1 sm:flex-none px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${drawMode === 'algorithmic' ? 'bg-[#E0B589] text-black' : 'text-gray-400'}`}
                 >
-                  Algorithmic (Frequency-Weighted)
+                  Algorithmic
                 </button>
                 <button
                   onClick={() => setDrawMode('random')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${drawMode === 'random' ? 'bg-[#E0B589] text-black' : 'text-gray-400'}`}
+                  className={`flex-1 sm:flex-none px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${drawMode === 'random' ? 'bg-[#E0B589] text-black' : 'text-gray-400'}`}
                 >
-                  Standard Random
+                  Random
                 </button>
               </div>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleSimulate}
                 disabled={isSimulating}
-                className="px-6 py-3 rounded-xl font-bold bg-[#1E293B] hover:bg-[#334155] text-white text-xs tracking-wider uppercase transition-all"
+                className="flex-1 px-4 py-3 rounded-xl font-bold bg-[#1E293B] hover:bg-[#334155] text-white text-xs tracking-wider uppercase transition-all"
               >
-                {isSimulating ? 'Simulating...' : 'Run Simulation Before Publish'}
+                {isSimulating ? 'Simulating...' : 'Run Simulation'}
               </button>
               <button
                 onClick={handlePublishDraw}
-                className="px-6 py-3 rounded-xl font-bold bg-[#E0B589] hover:bg-[#C99E72] text-black text-xs tracking-wider uppercase transition-all shadow-md shadow-[#E0B589]/20"
+                className="flex-1 px-4 py-3 rounded-xl font-bold bg-[#E0B589] hover:bg-[#C99E72] text-black text-xs tracking-wider uppercase transition-all shadow-md shadow-[#E0B589]/20"
               >
                 Publish Official Draw
               </button>
