@@ -1,5 +1,6 @@
 ﻿const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const scoreController = require('./controllers/scoreController');
 const drawController = require('./controllers/drawController');
@@ -46,6 +47,14 @@ app.put('/api/winners/verify/:claimId', winnerController.verifyClaim);
 app.get('/api/user/profile', userController.getProfile);
 app.put('/api/user/profile', userController.updateProfile);
 app.get('/api/admin/stats', userController.getAdminStats);
+
+// --- Serve Frontend Built Static Files ---
+app.use(express.static(path.join(__dirname, '../../client/dist')));
+
+// Fallback to React index.html for client-side routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`Digital Heroes Backend Server listening on http://localhost:${PORT}`);
