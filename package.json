@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A golf performance and charity draw platform (Digital Heroes PRD Level 1)",
   "scripts": {
+    "start": "cd server && node src/index.js",
     "test": "cd server && npm test",
     "server": "cd server && npm start",
     "client": "cd client && npm run dev",
