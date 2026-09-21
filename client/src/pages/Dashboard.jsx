@@ -143,7 +143,7 @@ export default function Dashboard() {
               Enter your latest score (1–45 points). Only the latest 5 scores are kept and used in the monthly draw. One entry per calendar date.
             </p>
 
-            <form onSubmit={handleAddScore} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <form onSubmit={handleAddScore} className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div>
                 <label className="block text-xs font-semibold uppercase text-gray-400 mb-1">Score (1–45)</label>
                 <input

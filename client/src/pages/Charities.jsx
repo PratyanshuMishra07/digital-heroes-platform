@@ -15,7 +15,7 @@ export default function Charities() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
       <div className="text-center max-w-2xl mx-auto space-y-4">
         <span className="text-xs font-bold uppercase tracking-widest text-[#E0B589]">Section § 08</span>
-        <h1 className="text-4xl font-extrabold text-white">Charity Directory & Causes</h1>
+        <h1 className="text-2xl sm:text-4xl font-extrabold text-white">Charity Directory & Causes</h1>
         <p className="text-sm text-gray-300">
           Discover certified grassroots initiatives supported by golfers worldwide. Direct a portion of your subscription or give independently.
         </p>
